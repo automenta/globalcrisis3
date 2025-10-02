@@ -1,250 +1,272 @@
 # ThreatForge 3D Engine Development Plan
 
 ## Project Overview
-ThreatForge is a cutting-edge, comprehensive, and modular game engine designed to simulate modern global threats. The engine supports detailed simulation across multiple threat domains (cyber, biological, environmental, quantum, radiological, robotic) with a unified 3D rendering system that provides contextual visualization and interaction capabilities.
+
+ThreatForge is a cutting-edge, comprehensive, and modular game engine designed to simulate modern global threats through **component-based emergent behaviors**. The engine supports detailed simulation across multiple threat domains (cyber, biological, environmental, quantum, radiological, robotic) with a unified 3D rendering system that provides contextual visualization and interaction capabilities, focusing on **atomic component composition** that creates unpredictable, emergent outcomes.
 
 ## Core Architecture Goals
+
+- **Component-Based Threat Architecture**: Atomic behavioral components that compose into complex emergent threats
+- **Cross-Domain Interaction Matrix**: Sophisticated system calculating component interactions across domains
+- **Emergent Behavior Engine**: AI-driven system predicting unexpected outcomes from component interactions
 - **Offline-first Progressive Web App (PWA)** with WebGL rendering
-- **Modular plugin-based architecture** with JSON manifests
 - **Unified 3D engine** for map rendering and contextual model visualization
-- **Metaprogramming-driven UI** for automatic widget generation
-- **Development mode** with inspection/manipulation tools and time control
-- **Cross-domain threat simulation** with physics-based propagation
+- **Development mode** with component inspection and manipulation tools
 - **Asymmetric faction system** with unique capabilities and objectives
 
 ## Development Roadmap
 
-### Phase 1: Core Engine Foundation (Weeks 1-3)
+### Phase 1: Core Component Foundation (Weeks 1-3)
+
 - [ ] **Set up project structure and build system**
   - Initialize npm project with TypeScript
   - Configure Webpack/Vite for development and production builds
   - Set up ESLint, Prettier, and TypeScript configuration
   - Create basic HTML entry point with PWA manifest
 
-- [ ] **Implement core 3D rendering engine**
-  - Set up Three.js with WebGL renderer
-  - Create scene management system with camera controls
-  - Implement basic lighting and material systems
-  - Add performance monitoring and frame rate targeting (60 FPS)
+- [ ] **Implement core component architecture**
+  - Create atomic component system with TypeScript interfaces
+  - Build component registry and discovery system
+  - Implement component composition framework
+  - Define cross-domain interaction matrix
 
-- [ ] **Build modular plugin architecture**
-  - Create plugin loader system with JSON manifest parsing
-  - Implement plugin lifecycle management (load, initialize, update, unload)
-  - Define plugin API interfaces and hooks
-  - Create example threat domain plugins (Cyber, Bio, Environmental)
+- [ ] **Build component interaction engine**
+  - Create interaction calculation algorithms
+  - Implement emergence potential scoring
+  - Build component mutation and evolution system
+  - Add dynamic composition capabilities
 
 - [ ] **Implement event bus system**
   - Create Pub/Sub event system for decoupled communication
   - Implement event queuing and priority handling
   - Add event filtering and subscription management
-  - Create domain-specific event types
+  - Create component-specific event types
 
-### Phase 2: World Simulation (Weeks 4-6)
-- [ ] **Develop world state management**
-  - Create WorldState interface with regions, factions, and global metrics
-  - Implement state serialization/deserialization
-  - Add state validation and consistency checks
-  - Create state diff system for efficient updates
+### Phase 2: Component-Based World Simulation (Weeks 4-6)
 
-- [ ] **Build physics simulation engine**
-  - Implement Newtonian mechanics for unit movement
-  - Create orbital mechanics for satellite simulation
-  - Add environmental physics (weather, terrain effects)
-  - Implement cross-domain physics interactions
+- [ ] **Develop component world state management**
+  - Create component-based WorldState interface
+  - Implement component serialization/deserialization
+  - Add component validation and consistency checks
+  - Create component diff system for efficient updates
 
-- [ ] **Create threat simulation system**
-  - Implement Threat interface with domain-specific properties
-  - Build threat propagation models (diffusion, network, vector-based)
-  - Add threat mutation and evolution system
-  - Create cross-domain interaction algorithms
+- [ ] **Build component physics simulation**
+  - Implement component-based physics interactions
+  - Create cross-domain physics integration
+  - Add component-specific physics models
+  - Implement emergent physics behaviors
 
-- [ ] **Implement faction system**
-  - Create Faction interface with asymmetric capabilities
-  - Implement resource management (funds, intel, manpower, tech)
-  - Add faction-specific win conditions and objectives
-  - Create faction relationship and diplomacy system
+- [ ] **Create component threat simulation**
+  - Implement atomic threat component interfaces
+  - Build component composition algorithms
+  - Add component evolution and mutation system
+  - Create cross-component interaction models
 
-### Phase 3: 3D Visualization (Weeks 7-9)
-- [ ] **Build 3D world map renderer**
-  - Create spherical world geometry with texture mapping
-  - Implement dynamic terrain generation with LOD
-  - Add region boundary visualization
-  - Create atmospheric and space rendering
+- [ ] **Implement component-based faction system**
+  - Create faction-specific component capabilities
+  - Implement component resource management
+  - Add faction component win conditions
+  - Create component-based diplomacy system
 
-- [ ] **Implement contextual visualization layers**
-  - Heatmap layers for threat intensity
-  - Faction control region visualization
-  - Resource flow vectors and animations
-  - Military unit positions and movement trails
-  - Satellite orbits and ground tracks
+### Phase 3: 3D Component Visualization (Weeks 7-9)
 
-- [ ] **Create interactive 3D widgets**
-  - Implement raycasting for object selection
-  - Create contextual UI overlays for selected objects
-  - Add 3D UI elements (buttons, panels, indicators)
-  - Implement gesture-based interactions
+- [ ] **Build 3D component visualization**
+  - Create component-specific visual representations
+  - Implement component interaction visualization
+  - Add component emergence visual effects
+  - Create component composition previews
 
-- [ ] **Add special effects and animations**
-  - Particle systems for explosions, weather, and threats
-  - Shader effects for quantum and radiological visualization
-  - Animated threat propagation vectors
-  - Transition animations for UI elements
+- [ ] **Implement contextual component layers**
+  - Component heatmaps for threat intensity
+  - Component interaction vector fields
+  - Component evolution timeline visualizations
+  - Component composition diagrams
 
-### Phase 4: UI and Metaprogramming (Weeks 10-12)
-- [ ] **Build metaprogramming system**
-  - Create automatic UI widget generation from data schemas
-  - Implement dynamic API generation for game objects
-  - Add reflection system for runtime type inspection
-  - Create code generation tools for boilerplate reduction
+- [ ] **Create interactive component widgets**
+  - Component composition interface
+  - Component interaction editor
+  - Component property inspectors
+  - Component emergence calculators
 
-- [ ] **Implement adaptive UI system**
-  - Create context-sensitive control panels
-  - Implement threat prioritization and alert system
-  - Add decision support with AI recommendations
-  - Create multi-faction view capabilities
+- [ ] **Add component special effects**
+  - Component interaction particles
+  - Component evolution animations
+  - Component emergence visualizations
+  - Component composition transitions
 
-- [ ] **Build domain-specific dashboards**
-  - Create threat evolution tree visualizations
-  - Implement risk/reward matrix displays
-  - Add timeline projection charts
-  - Create faction-specific console interfaces
+### Phase 4: Component UI and Metaprogramming (Weeks 10-12)
 
-- [ ] **Implement accessibility features**
-  - Add color-blind friendly visualization modes
-  - Implement text-to-speech for UI elements
-  - Create keyboard navigation system
-  - Add customizable control mapping
+- [ ] **Build component metaprogramming system**
+  - Create automatic component UI generation
+  - Implement dynamic component API creation
+  - Add component reflection system
+  - Create component code generation tools
 
-### Phase 5: Development Tools (Weeks 13-14)
-- [ ] **Create development mode**
-  - Implement game state inspector with real-time editing
-  - Add time control system (pause, slow-motion, fast-forward)
-  - Create threat spawning and manipulation tools
-  - Build performance profiling and debugging tools
+- [ ] **Implement adaptive component UI**
+  - Create context-sensitive component controls
+  - Implement component prioritization system
+  - Add component composition assistance
+  - Create component emergence visualizers
 
-- [ ] **Implement inspection and debugging tools**
-  - Create entity property inspectors
-  - Add event log viewer with filtering
-  - Implement physics visualization overlays
-  - Create network traffic analyzer for multiplayer
+- [ ] **Build component-specific dashboards**
+  - Component interaction matrices
+  - Component evolution visualizations
+  - Component emergence calculators
+  - Component composition builders
 
-- [ ] **Build scenario editor**
-  - Create visual scenario builder interface
-  - Implement trigger and condition system
-  - Add narrative chain editor
-  - Create test scenario templates
+- [ ] **Implement component accessibility**
+  - Component-friendly color schemes
+  - Component narration system
+  - Component keyboard navigation
+  - Component customization options
 
-### Phase 6: Advanced Features (Weeks 15-18)
-- [ ] **Implement procedural generation**
-  - Create world generation using Perlin noise and L-systems
-  - Implement dynamic threat generation algorithms
-  - Add procedural narrative generation
-  - Create seeded generation for reproducible worlds
+### Phase 5: Component Development Tools (Weeks 13-14)
 
-- [ ] **Build multiplayer framework**
-  - Implement WebSocket-based client-server architecture
-  - Create state synchronization system
-  - Add latency compensation and prediction
-  - Implement quantum-secure networking protocols
+- [ ] **Create component development mode**
+  - Implement component inspector with editing
+  - Add component composition tools
+  - Create component testing environment
+  - Build component performance profiler
 
-- [ ] **Create educational integration**
-  - Implement real-world parallel system
-  - Add historical comparison tools
-  - Create educational overlays and tooltips
-  - Build learning analytics system
+- [ ] **Implement component debugging tools**
+  - Create component property inspectors
+  - Add component interaction visualizers
+  - Implement component evolution trackers
+  - Create component emergence analyzers
 
-- [ ] **Implement advanced threat mechanics**
-  - Add quantum computing threat simulation
-  - Implement neurological threat propagation
-  - Create temporal threat mechanics
-  - Build cross-domain synergy system
+- [ ] **Build component scenario editor**
+  - Create component composition scenarios
+  - Implement component interaction triggers
+  - Add component evolution conditions
+  - Create component emergence templates
 
-### Phase 7: Performance and Optimization (Weeks 19-20)
-- [ ] **Optimize rendering performance**
-  - Implement Level of Detail (LOD) system with 4 quality levels
-  - Add frustum culling and occlusion culling
-  - Create texture streaming and compression
-  - Implement GPU-accelerated computations with WebGPU
+### Phase 6: Advanced Component Features (Weeks 15-18)
 
-- [ ] **Optimize simulation performance**
-  - Implement spatial partitioning (quadtrees for 2D, octrees for 3D)
-  - Add entity pooling and sleep states
-  - Create multi-threaded physics with Web Workers
-  - Implement dynamic quality scaling
+- [ ] **Implement procedural component generation**
+  - Create component generation algorithms
+  - Implement component interaction discovery
+  - Add component emergence prediction
+  - Create component composition optimization
 
-- [ ] **Add caching and memory management**
-  - Implement asset caching system
-  - Add memory usage monitoring
-  - Create garbage collection optimization
-  - Implement save state compression
+- [ ] **Build component multiplayer framework**
+  - Implement component synchronization
+  - Create component interaction sharing
+  - Add component evolution coordination
+  - Implement component emergence competition
 
-### Phase 8: Deployment and Testing (Weeks 21-22)
-- [ ] **Implement PWA capabilities**
-  - Create service worker for offline functionality
-  - Add app manifest for installation
-  - Implement background sync
-  - Create offline asset caching
+- [ ] **Create component educational integration**
+  - Implement component-based learning system
+  - Add component interaction tutorials
+  - Create component emergence demonstrations
+  - Build component analysis tools
 
-- [ ] **Build testing framework**
-  - Set up Playwright for headless testing
-  - Create unit tests for core systems
-  - Add integration tests for cross-domain interactions
-  - Implement performance benchmarks
+- [ ] **Implement advanced component mechanics**
+  - Add quantum component interactions
+  - Implement neurological component propagation
+  - Create temporal component mechanics
+  - Build cross-component synergy system
 
-- [ ] **Create deployment pipeline**
-  - Set up CI/CD with GitHub Actions
-  - Implement automated testing on commit
-  - Create staging and production environments
-  - Add error monitoring and analytics
+### Phase 7: Component Performance and Optimization (Weeks 19-20)
 
-- [ ] **Finalize documentation**
-  - Create API documentation with TypeDoc
-  - Write user guides and tutorials
-  - Add inline code documentation
-  - Create modding documentation for community
+- [ ] **Optimize component rendering performance**
+  - Implement component LOD system
+  - Add component culling optimization
+  - Create component batching system
+  - Implement component GPU acceleration
+
+- [ ] **Optimize component simulation performance**
+  - Implement component pooling system
+  - Add component sleep states
+  - Create component update throttling
+  - Implement component parallel processing
+
+- [ ] **Add component caching and memory management**
+  - Implement component caching system
+  - Add component memory monitoring
+  - Create component garbage collection
+  - Implement component state compression
+
+### Phase 8: Component Deployment and Testing (Weeks 21-22)
+
+- [ ] **Implement component PWA capabilities**
+  - Create component service worker
+  - Add component offline functionality
+  - Implement component background sync
+  - Create component asset caching
+
+- [ ] **Build component testing framework**
+  - Set up component unit testing
+  - Create component integration tests
+  - Add component interaction tests
+  - Implement component emergence validation
+
+- [ ] **Create component deployment pipeline**
+  - Set up component CI/CD pipeline
+  - Implement component automated testing
+  - Create component staging environment
+  - Add component deployment automation
+
+- [ ] **Finalize component documentation**
+  - Create component API documentation
+  - Write component composition guides
+  - Add component interaction examples
+  - Create component development tutorials
 
 ## Technical Specifications
 
 ### Performance Targets
 - **Frame Rate**: 60 FPS with 16ms frame budget
-- **Memory Usage**: <8GB total footprint
-- **CPU Usage**: <50% during typical gameplay
-- **Load Time**: <30 seconds for initial world generation
+- **Component Count**: 10,000+ active components at 30 Hz
+- **Memory Usage**: <8GB total footprint with component pooling
+- **Load Time**: <30 seconds for initial component library
 - **Hardware Support**: Intel i5/i7, 16GB RAM, GTX 1660/RTX 3050
 
 ### Technology Stack
 - **Frontend**: HTML5, TypeScript, WebGL
 - **3D Rendering**: Three.js with WebGPU acceleration
-- **Physics**: Custom Newtonian mechanics with Web Workers
-- **State Management**: Immutable state with diff tracking
-- **Networking**: WebSockets with quantum-secure protocols
+- **Component Physics**: Custom interaction models with Web Workers
+- **State Management**: Component-based composition with diff tracking
+- **Networking**: WebSockets with component synchronization
 - **Build Tools**: Vite, TypeScript, ESLint, Prettier
-- **Testing**: Playwright, Jest, Custom headless framework
+- **Testing**: Playwright, Jest, Component testing framework
 
 ### Architecture Patterns
-- **Modular Plugin System**: JSON manifests with lifecycle hooks
-- **Event-Driven Architecture**: Pub/Sub pattern for decoupling
-- **Entity Component System**: Flexible entity composition
-- **Command Pattern**: For undo/redo and multiplayer sync
-- **Observer Pattern**: For UI updates and state changes
-- **Factory Pattern**: For threat and entity creation
+- **Component Composition**: Atomic components compose into complex threats
+- **Emergent Behavior**: Behaviors arise from component interactions
+- **Cross-Domain Integration**: Natural component interactions across domains
+- **Event-Driven Architecture**: Pub/Sub pattern for component communication
+- **Plugin System**: JSON manifests for component extensions
+- **Factory Pattern**: For component creation and composition
 
-## Success Criteria
-- [ ] Working 3D engine with 60 FPS performance
-- [ ] Modular plugin system with 3+ threat domains
-- [ ] Functional development mode with inspection tools
-- [ ] Cross-domain threat interactions working
-- [ ] PWA installation and offline functionality
-- [ ] Comprehensive test coverage (>80%)
-- [ ] Educational integration with real-world parallels
-- [ ] Accessibility compliance (WCAG 2.1 AA)
-- [ ] Multiplayer framework with synchronization
-- [ ] Community modding support with documentation
+## Component Success Criteria
 
-## Risk Mitigation
-- **Performance Issues**: Early profiling and optimization, LOD system
-- **Complexity Management**: Modular architecture, clear interfaces
-- **Browser Compatibility**: Progressive enhancement, fallback rendering
-- **Multiplayer Synchronization**: State reconciliation, latency compensation
-- **Security**: Input validation, secure networking protocols
-- **Scalability**: Spatial partitioning, entity pooling, caching systems
+- [ ] Working component composition system with 50+ atomic components
+- [ ] Functional component interaction matrix with emergence calculation
+- [ ] Component development mode with inspection and composition tools
+- [ ] Cross-domain component interactions creating emergent behaviors
+- [ ] PWA installation with component offline functionality
+- [ ] Comprehensive component test coverage (>80%)
+- [ ] Educational component integration with real-world parallels
+- [ ] Component accessibility compliance (WCAG 2.1 AA)
+- [ ] Multiplayer component synchronization framework
+- [ ] Community component modding support with documentation
+
+## Component Risk Mitigation
+
+- **Complexity Management**: Component-based architecture prevents monolithic complexity
+- **Performance Issues**: Component pooling and LOD optimization
+- **Emergence Unpredictability**: Controlled emergence with safety bounds
+- **Browser Compatibility**: Progressive component enhancement
+- **Multiplayer Synchronization**: Component state reconciliation
+- **Educational Accuracy**: Expert-reviewed component behaviors
+
+## Component Development Principles
+
+1. **Atomic Design**: Components should be minimal, focused behavioral units
+2. **Emergent Focus**: Design for unexpected interactions, not predetermined outcomes
+3. **Cross-Domain Compatibility**: Components should interact naturally across domains
+4. **Educational Value**: Each component should teach real-world principles
+5. **Performance Conscious**: Components must scale to thousands of instances
+6. **Extensible Architecture**: New components should integrate seamlessly
+
+This component-based approach transforms ThreatForge from a traditional threat simulation into a dynamic ecosystem where complex, emergent behaviors arise naturally from atomic component interactions, providing both educational value and engaging gameplay through unpredictable emergent outcomes.
