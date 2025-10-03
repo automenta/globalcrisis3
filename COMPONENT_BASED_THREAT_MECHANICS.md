@@ -2,7 +2,20 @@
 
 ## Overview
 
-This document provides implementable specifications for ThreatForge's component-based threat simulation system. Instead of pre-defined threats, the system composes complex scenarios from atomic behavioral components that generate unpredictable outcomes through their interactions, with dynamically adjustable performance and complexity levels based on hardware capabilities and user preferences.
+This document provides implementable specifications for ThreatForge's component-based threat simulation system. For conceptual overview, see [Component Architecture](./COMPONENT_ARCHITECTURE.md). For code examples and educational framework, see [Code Examples](./CODE_EXAMPLES.md) and [Quick Start](./QUICK_START.md).
+## Complete Threat-Threatenable Ecosystem
+
+ThreatForge implements a **complete threat ecosystem** where threats and threatenables interact as first-class components:
+
+```
+Threat Components ↔ Threatenable Components ↔ Environmental Context
+     ↓                    ↓                        ↓
+[Attack Vectors]   [Vulnerability Profiles]   [Interaction Arena]
+[Propagation]      [Resistance Factors]      [Emergent Outcomes]
+[Evolution]        [Adaptive Responses]      [System Dynamics]
+```
+
+This creates a **balanced simulation** where both threats and their potential targets are modeled with equal sophistication, enabling realistic bidirectional interactions and emergent system behaviors. For detailed threatenable specifications, see [Threatenable Specification](./THREATENABLE_SPECIFICATION.md).
 
 ## Core Implementation Specification
 
@@ -68,183 +81,6 @@ class PerformanceManager {
 }
 ```
 
-## Educational Simulation Framework
-
-### Learning Progression System
-
-```typescript
-// Educational framework with measurable learning objectives
-interface EducationalFramework {
-  learningObjectives: {
-    cognitive: string[];      // What learners should understand
-    behavioral: string[];     // What learners should be able to do
-    affective: string[];      // Attitudes learners should develop
-  };
-  assessmentCriteria: {
-    knowledge: AssessmentMetric[];
-    skills: AssessmentMetric[];
-    application: AssessmentMetric[];
-  };
-  progressionPath: LearningStage[];
-}
-
-interface LearningStage {
-  id: string;
-  title: string;
-  description: string;
-  prerequisites: string[];
-  outcomes: string[];
-  activities: LearningActivity[];
-  assessment: AssessmentMethod;
-}
-
-// Implementable learning progression for component-based systems
-const componentLearningPath: LearningStage[] = [
-  {
-    id: 'stage-1-atomic',
-    title: 'Atomic Component Understanding',
-    description: 'Learners understand individual threat components and their properties',
-    prerequisites: ['basic-programming', 'system-thinking'],
-    outcomes: [
-      'Identify component types and domains',
-      'Explain component properties and behaviors',
-      'Predict individual component effects'
-    ],
-    activities: [
-      {
-        type: 'interactive-simulation',
-        description: 'Manipulate single components and observe direct effects',
-        duration: 'self-paced',
-        metrics: ['component-identification-accuracy', 'property-prediction-correctness']
-      },
-      {
-        type: 'component-analysis',
-        description: 'Analyze real-world threats and identify constituent components',
-        assessment: 'component-decomposition-exercise'
-      }
-    ],
-    assessment: {
-      type: 'practical-examination',
-      passingScore: 0.8,
-      validation: 'learner-can-decompose-simple-threats'
-    }
-  },
-  {
-    id: 'stage-2-interaction',
-    title: 'Component Interaction Patterns',
-    description: 'Learners understand how components interact and influence each other',
-    prerequisites: ['stage-1-atomic'],
-    outcomes: [
-      'Predict component interaction outcomes',
-      'Identify synergy and conflict patterns',
-      'Explain cross-domain effects'
-    ],
-    activities: [
-      {
-        type: 'pair-simulation',
-        description: 'Combine two components and observe interactions',
-        metrics: ['interaction-prediction-accuracy', 'emergent-behavior-recognition']
-      }
-    ],
-    assessment: {
-      type: 'scenario-analysis',
-      passingScore: 0.75,
-      validation: 'learner-can-predict-binary-interactions'
-    }
-  }
-];
-```
-
-### Entertainment Through Deep Simulation Mechanics
-
-```typescript
-// Game mechanics that create engaging learning through discovery
-interface SimulationGameMechanics {
-  discoverySystem: {
-    unknownInteractions: InteractionLibrary;
-    researchMechanics: ResearchSystem;
-    revelationEvents: DiscoveryEvent[];
-  };
-  challengeSystem: {
-    adaptiveDifficulty: DifficultyScaling;
-    scenarioComplexity: ComplexityManager;
-    performancePressure: PerformanceConstraints;
-  };
-  narrativeSystem: {
-    emergentStorytelling: StoryGenerator;
-    consequenceVisualization: ImpactVisualizer;
-    progressionFeedback: FeedbackSystem;
-  };
-}
-
-// Implementable discovery mechanics
-class DiscoveryMechanics {
-  private unknownInteractions: Map<string, UnknownInteraction>;
-  private researchProgress: Map<string, number>;
-  
-  revealInteraction(componentA: string, componentB: string, context: SimulationContext): DiscoveryEvent {
-    const interactionKey = `${componentA}-${componentB}`;
-    const unknown = this.unknownInteractions.get(interactionKey);
-    
-    if (!unknown) return null;
-    
-    // Calculate discovery probability based on research and context
-    const discoveryChance = this.calculateDiscoveryProbability(unknown, context);
-    
-    if (Math.random() < discoveryChance) {
-      return this.createDiscoveryEvent(unknown, context);
-    }
-    
-    return null;
-  }
-  
-  private calculateDiscoveryProbability(unknown: UnknownInteraction, context: SimulationContext): number {
-    let probability = unknown.baseDiscoveryRate;
-    
-    // Increase probability with relevant research
-    unknown.requiredResearch.forEach(research => {
-      const progress = this.researchProgress.get(research) || 0;
-      probability += progress * 0.1;
-    });
-    
-    // Environmental factors affect discovery
-    if (context.hasLaboratory) probability *= 1.5;
-    if (context.hasObservationTools) probability *= 1.3;
-    if (context.timePressure) probability *= 0.7;
-    
-    return Math.min(1.0, probability);
-  }
-}
-
-// Engaging challenge mechanics
-class AdaptiveChallengeSystem {
-  private playerSkillLevel: number;
-  private currentComplexity: number;
-  private successRate: number;
-  
-  adjustChallenge(realTimePerformance: PerformanceMetrics): ChallengeAdjustment {
-    // Monitor player success and engagement
-    if (this.successRate > 0.8 && this.engagementLevel > 0.7) {
-      // Player is doing well, increase complexity
-      return {
-        action: 'increase-complexity',
-        newComplexity: this.currentComplexity * 1.2,
-        reasoning: 'High success rate indicates readiness for more challenge'
-      };
-    } else if (this.successRate < 0.4 || this.engagementLevel < 0.3) {
-      // Player is struggling, provide assistance
-      return {
-        action: 'provide-guidance',
-        assistanceType: 'hint-system',
-        reasoning: 'Low success rate indicates need for support'
-      };
-    }
-    
-    return { action: 'maintain-current' };
-  }
-}
-```
-
 ## Core Philosophy
 
 ### The Problem with Traditional Approaches
@@ -280,6 +116,7 @@ Atomic Components → Educational Discovery → Emergent Behaviors → Engaging 
 - **Performance Flexibility**: Adjustable complexity and quality levels based on hardware and learning needs
 - **Entertainment Value**: Discovery mechanics, challenge systems, and narrative feedback create engagement
 - **Educational Value**: Structured learning progression with measurable outcomes and assessments
+
 ## 🔍 Current System Analysis
 
 ### Monolithic Architecture Problems
@@ -1144,290 +981,340 @@ This component-based architecture transforms ThreatForge from a static threat si
 
 ## Scientific Interaction Discovery System
 
-### Hypothesis-Driven Discovery Framework
+For comprehensive educational framework details including learning progression, discovery mechanics, and scientific validation, see [QUICK_START.md](./QUICK_START.md#educational-simulation-framework).
+
+### Core Scientific Discovery Implementation
 
 ```typescript
-// Scientific method applied to component interaction discovery
+// Core scientific method implementation for component interaction discovery
 class ScientificInteractionDiscovery {
-  private hypothesisEngine: HypothesisEngine;
-  private experimentFramework: ExperimentFramework;
-  private validationSystem: ValidationSystem;
-  private discoveryHistory: DiscoveryRecord[];
-  private reproducibilityTracker: ReproducibilityTracker;
-  
   discoverInteraction(componentA: ThreatComponent, componentB: ThreatComponent): DiscoveryResult {
-    // Generate hypothesis based on component properties and scientific principles
-    const hypothesis = this.hypothesisEngine.generateHypothesis(componentA, componentB);
+    // Generate hypothesis based on component properties
+    const hypothesis = this.generateHypothesis(componentA, componentB);
     
-    // Design controlled experiment with measurable outcomes
-    const experiment = this.experimentFramework.designExperiment(hypothesis);
-    
-    // Run experiment with statistical rigor
+    // Design and run controlled experiment
+    const experiment = this.designExperiment(hypothesis);
     const results = this.runControlledExperiment(experiment);
     
-    // Validate results with statistical significance testing
-    const validation = this.validationSystem.validateResults(results);
+    // Validate with statistical significance
+    const validation = this.validateResults(results);
     
-    // Verify reproducibility across multiple trials
-    const reproducible = this.reproducibilityTracker.verifyReproducibility(results);
-    
-    if (validation.isSignificant && validation.confidence > 0.95 && reproducible) {
-      const discovery = this.createDiscoveryRecord(hypothesis, results, validation);
-      this.updateScientificKnowledge(discovery);
-      return discovery;
+    if (validation.isSignificant && validation.confidence > 0.95) {
+      return this.createDiscoveryRecord(hypothesis, results, validation);
     }
     
     return null;
   }
-  
-  private runControlledExperiment(experiment: Experiment): ExperimentResults {
-    // Create control and experimental groups with proper randomization
-    const controlGroup = this.createControlGroup(experiment);
-    const experimentalGroup = this.createExperimentalGroup(experiment);
-    
-    // Determine sample size based on desired statistical power
-    const sampleSize = this.calculateSampleSize(experiment);
-    
-    // Run double-blind trials to eliminate bias
-    const results = this.runDoubleBlindTrials(controlGroup, experimentalGroup, sampleSize);
-    
-    // Apply statistical analysis with proper significance testing
-    return this.analyzeWithStatisticalRigor(results, experiment.hypothesis);
-  }
-  
-  private calculateSampleSize(experiment: Experiment): number {
-    // Use power analysis to determine adequate sample size
-    const effectSize = this.estimateEffectSize(experiment);
-    const alpha = 0.05; // Significance level
-    const power = 0.80; // Statistical power
-    
-    return this.powerAnalysis(effectSize, alpha, power);
-  }
 }
 
-// Educational integration for scientific learning
-interface ScientificLearningOutcome {
-  hypothesisFormulation: boolean;
-  experimentalDesign: boolean;
-  statisticalAnalysis: boolean;
-  reproducibilityVerification: boolean;
-  peerReviewSimulation: boolean;
-}
+// Cross-domain interaction validation
+## Unified Threat-Threatenable Interaction System
 
-class EducationalScientificDiscovery extends ScientificInteractionDiscovery {
-  private learningTracker: LearningTracker;
-  private assessmentRubric: AssessmentRubric;
-  
-  discoverWithLearning(componentA: ThreatComponent, componentB: ThreatComponent, learnerId: string): EducationalDiscoveryResult {
-    // Track learner's scientific method application
-    const learningStart = this.learningTracker.recordStart(learnerId, 'scientific_discovery');
-    
-    // Guide learner through hypothesis formation
-    const hypothesis = this.guideHypothesisFormation(componentA, componentB, learnerId);
-    
-    // Teach experimental design principles
-    const experiment = this.teachExperimentalDesign(hypothesis, learnerId);
-    
-    // Demonstrate statistical analysis techniques
-    const results = this.demonstrateStatisticalAnalysis(experiment, learnerId);
-    
-    // Assess learning outcomes
-    const outcomes = this.assessScientificLearning(learnerId);
-    
-    return {
-      discovery: super.discoverInteraction(componentA, componentB),
-      learningOutcomes: outcomes,
-      skillDevelopment: this.evaluateSkillProgression(learnerId)
-    };
-  }
-}
+### Complete Ecosystem Integration
 
-### Cross-Domain Interaction Matrix with Scientific Validation
+The ThreatForge simulation creates a **complete threat ecosystem** where threats and threatenables co-evolve through dynamic interactions:
 
 ```typescript
-// Scientifically-validated cross-domain interactions with measurable outcomes
-interface CrossDomainInteractionMatrix {
-  // Cyber-Biological interactions with experimental validation
-  cyberBio: {
-    'MALWARE_GENETIC_ALGORITHM': {
-      hypothesis: 'Malware using genetic algorithms will evolve like biological systems',
-      experimentalEvidence: ExperimentResult[];
-      confidence: number; // 0-1, based on statistical significance
-      reproducibility: number; // 0-1, based on replication studies
-      practicalApplications: string[];
-    };
-    'NETWORK_INFECTION_DYNAMICS': {
-      hypothesis: 'Computer network infections follow same mathematical models as biological epidemics',
-      mathematicalModel: MathematicalModel;
-      validationStudies: ValidationStudy[];
-      predictiveAccuracy: number;
-    };
-  };
+interface UnifiedThreatEcosystem {
+  threats: ComposedThreat[];
+  threatenables: Threatenable[];
+  interactionEngine: ThreatenableThreatInteractionEngine;
+  emergenceCalculator: UnifiedEmergenceCalculator;
+  performanceManager: PerformanceOptimizedThreatenableManager;
+  environment: EnvironmentalContext;
+}
+
+class UnifiedThreatSimulation {
+  private ecosystem: UnifiedThreatEcosystem;
   
-  // Quantum-Cyber interactions with quantum mechanical validation
-  quantumCyber: {
-    'QUANTUM_CRYPTOGRAPHY_VULNERABILITY': {
-      hypothesis: 'Quantum computers can break classical cryptographic systems',
-      theoreticalBasis: QuantumMechanicsPrinciples;
-      experimentalVerification: QuantumExperiment[];
-      securityImpact: SecurityAssessment;
+  simulate(deltaTime: number): EcosystemResults {
+    // Update threats considering threatenable responses
+    this.updateThreatsWithThreatenableContext(deltaTime);
+    
+    // Update threatenables considering threat evolution
+    this.updateThreatenablesWithThreatContext(deltaTime);
+    
+    // Calculate bidirectional interactions
+    const interactions = this.ecosystem.interactionEngine.calculateAllInteractions(
+      this.ecosystem.threats,
+      this.ecosystem.threatenables
+    );
+    
+    // Apply interaction effects
+    this.applyBidirectionalEffects(interactions, deltaTime);
+    
+    // Discover emergent ecosystem behaviors
+    const emergentBehaviors = this.discoverEcosystemEmergence(interactions);
+    
+    return this.generateEcosystemResults(interactions, emergentBehaviors);
+  }
+}
+```
+
+### Threat-Threatenable Interaction Matrix
+
+The system calculates complex interactions between threat components and threatenable vulnerabilities/resistances:
+
+```typescript
+interface ThreatThreatenableInteraction {
+  threatComponent: ThreatComponent;
+  threatenableComponent: ThreatenableComponent; // Vulnerability or Resistance
+  interactionType: InteractionType;
+  intensity: number; // 0-1 scale
+  bidirectionalEffects: BidirectionalEffect[];
+  evolutionPotential: number;
+  cascadeRisk: number;
+}
+
+class ThreatenableThreatInteractionEngine {
+  calculateComponentInteraction(
+    threatComponent: ThreatComponent,
+    threatenableComponent: ThreatenableComponent
+  ): ThreatThreatenableInteraction {
+    const baseIntensity = this.calculateBaseIntensity(threatComponent, threatenableComponent);
+    const vulnerabilityMultiplier = this.getVulnerabilityMultiplier(threatenableComponent);
+    const resistanceReduction = this.getResistanceReduction(threatenableComponent);
+    
+    const intensity = Math.min(1.0, baseIntensity * vulnerabilityMultiplier * (1 - resistanceReduction));
+    
+    return {
+      threatComponent,
+      threatenableComponent,
+      interactionType: this.determineInteractionType(threatComponent, threatenableComponent),
+      intensity,
+      bidirectionalEffects: this.calculateBidirectionalEffects(threatComponent, threatenableComponent, intensity),
+      evolutionPotential: this.calculateEvolutionPotential(threatComponent, threatenableComponent),
+      cascadeRisk: this.calculateCascadeRisk(threatComponent, threatenableComponent, intensity)
     };
-    'QUANTUM_NETWORK_EFFECTS': {
-      hypothesis: 'Quantum entanglement can enhance network security and speed',
-      quantumMechanism: QuantumEntanglementTheory;
-      practicalDemonstrations: DemonstrationResult[];
-      scalabilityChallenges: TechnicalChallenge[];
-    };
+  }
+}
+```
+
+### Bidirectional Effect System
+
+Threats and threatenables affect each other through sophisticated bidirectional mechanisms:
+
+```typescript
+interface BidirectionalEffect {
+  threatEffect: {
+    type: string;
+    impact: number;
+    duration: number;
+    adaptationTrigger?: boolean;
   };
-  
-  // Economic-Psychological interactions with behavioral economics validation
-  economicPsych: {
-    'MARKET_BEHAVIOR_PATTERNS': {
-      hypothesis: 'Economic markets exhibit predictable psychological patterns under stress',
-      behavioralModels: BehavioralEconomicsModel[];
-      empiricalEvidence: MarketDataAnalysis[];
-      predictionAccuracy: StatisticalMeasure;
-    };
-    'DISINFORMATION_ECONOMIC_IMPACT': {
-      hypothesis: 'Disinformation campaigns have measurable economic consequences',
-      economicMetrics: EconomicIndicator[];
-      causationStudies: CausationStudy[];
-      costBenefitAnalysis: EconomicAnalysis;
-    };
+  threatenableEffect: {
+    type: string;
+    impact: number;
+    duration: number;
+    resistanceTrigger?: boolean;
   };
 }
 
-// Implementable cross-domain interaction discovery
-class CrossDomainInteractionDiscovery {
-  private interactionMatrix: CrossDomainInteractionMatrix;
-  private validationFramework: ValidationFramework;
-  private measurementTools: MeasurementToolkit;
-  
-  validateInteraction(domainA: ThreatDomain, domainB: ThreatDomain, interaction: ComponentInteraction): ValidationResult {
-    const interactionKey = `${domainA}-${domainB}`;
-    const hypothesis = this.interactionMatrix[interactionKey];
+class BidirectionalEffectCalculator {
+  calculateEffects(interaction: ThreatThreatenableInteraction): BidirectionalEffect[] {
+    const effects: BidirectionalEffect[] = [];
     
-    if (!hypothesis) {
-      return this.designNewValidationStudy(domainA, domainB, interaction);
+    // Threat affects threatenable (attack)
+    const threatImpact = this.calculateThreatImpact(interaction);
+    
+    // Threatenable affects threat (defense/adaptation)
+    const threatenableImpact = this.calculateThreatenableImpact(interaction);
+    
+    // Emergent: Mutual adaptation
+    if (interaction.intensity > 0.7) {
+      effects.push(this.createMutualAdaptationEffect(interaction));
     }
     
-    // Apply rigorous scientific validation
-    const validation = this.validationFramework.validate(hypothesis, interaction);
+    // Emergent: Evolutionary pressure
+    if (interaction.intensity > 0.8 && interaction.evolutionPotential > 0.6) {
+      effects.push(this.createEvolutionaryPressureEffect(interaction));
+    }
+    
+    return effects;
+  }
+}
+```
+
+### Ecosystem Emergence Patterns
+
+The unified system discovers emergent behaviors that arise from threat-threatenable interactions:
+
+```typescript
+class EcosystemEmergenceDiscovery {
+  discoverEcosystemEmergence(
+    threats: ComposedThreat[],
+    threatenables: Threatenable[],
+    interactions: ThreatThreatenableInteraction[]
+  ): EcosystemEmergentBehavior[] {
+    const emergentBehaviors: EcosystemEmergentBehavior[] = [];
+    
+    // Pattern 1: Threat Cascade Through Vulnerable Infrastructure
+    if (this.detectInfrastructureCascadePattern(interactions)) {
+      emergentBehaviors.push(new InfrastructureCascadeBehavior());
+    }
+    
+    // Pattern 2: Collective Immunity Development
+    if (this.detectCollectiveImmunityPattern(threatenables, interactions)) {
+      emergentBehaviors.push(new CollectiveImmunityBehavior());
+    }
+    
+    // Pattern 3: Adaptive Threat Evolution
+    if (this.detectAdaptiveEvolutionPattern(threats, interactions)) {
+      emergentBehaviors.push(new AdaptiveThreatEvolutionBehavior());
+    }
+    
+    // Pattern 4: Systemic Vulnerability Emergence
+    if (this.detectSystemicVulnerabilityPattern(threatenables, interactions)) {
+      emergentBehaviors.push(new SystemicVulnerabilityBehavior());
+    }
+    
+    return emergentBehaviors;
+  }
+}
+```
+
+### Performance-Optimized Integration
+
+The unified system maintains performance through intelligent optimization:
+
+```typescript
+class PerformanceOptimizedEcosystemManager {
+  private config: EcosystemPerformanceConfig;
+  
+  constructor(config: EcosystemPerformanceConfig) {
+    this.config = config || {
+      maxThreatThreatenableInteractions: 1000,
+      interactionUpdateFrequency: 'adaptive',
+      emergenceDiscoveryRate: 0.1,
+      quality: 'balanced'
+    };
+  }
+  
+  updateEcosystem(deltaTime: number): void {
+    const startTime = performance.now();
+    
+    // Prioritize interactions based on intensity and proximity
+    const priorityInteractions = this.prioritizeInteractions(
+      this.ecosystem.interactions,
+      this.config.maxThreatThreatenableInteractions
+    );
+    
+    // Update high-priority interactions
+    priorityInteractions.forEach(interaction => {
+      this.updateInteraction(interaction, deltaTime);
+    });
+    
+    // Discover emergent behaviors (throttled)
+    if (this.shouldDiscoverEmergence(deltaTime)) {
+      const emergentBehaviors = this.discoverEcosystemEmergence();
+      this.applyEmergentBehaviors(emergentBehaviors, deltaTime);
+    }
+    
+    // Adapt quality based on performance
+    const updateTime = performance.now() - startTime;
+    this.adaptQuality(updateTime);
+  }
+}
+```
+
+### Real-World Integration Examples
+
+#### Example 1: Pandemic Response Simulation
+```typescript
+// Create population with diverse vulnerabilities
+const urbanPopulation = threatenableComposer
+  .addVulnerability('DEMOGRAPHIC_VULNERABILITY', {
+    populationDensity: 0.85,
+    ageDistribution: { elderly: 0.18, children: 0.22, adults: 0.60 },
+    healthDisparities: 0.4,
+    healthcareAccess: 0.65
+  })
+  .addResistance('HERD_IMMUNITY', {
+    baselineImmunity: 0.3,
+    vaccinationWillingness: 0.78,
+    naturalImmunityDuration: 180
+  })
+  .addAdaptiveBehavior('SOCIAL_LEARNING', {
+    learningRate: 0.08,
+    informationSharing: 0.7,
+    behavioralPlasticity: 0.6
+  })
+  .compose();
+
+// Create adaptive pathogen
+const novelPathogen = threatComposer
+  .addComponent('BIOLOGICAL_INFECTION', {
+    transmissionRate: 0.65,
+    incubationPeriod: 4.5,
+    mutationPotential: 0.25
+  })
+  .addComponent('ADAPTATION_LEARNING', {
+    learningRate: 0.15,
+    adaptationSpeed: 0.8,
+    immuneEvasion: 0.7
+  })
+  .compose();
+
+// Simulate bidirectional co-evolution
+const ecosystemResults = ecosystemSimulation.simulateInteraction(
+  novelPathogen,
+  urbanPopulation,
+  365 // days
+);
+```
+
+#### Example 2: Cyber-Infrastructure Attack
+```typescript
+// Create interconnected infrastructure
+const powerGrid = threatenableComposer
+  .addVulnerability('NETWORK_EXPOSURE', {
+    internetConnectivity: 0.9,
+    remoteAccessPoints: 0.65,
+    thirdPartyConnections: 0.8
+  })
+  .addResistance('INTRUSION_DETECTION', {
+    monitoringCoverage: 0.7,
+    anomalyDetection: 0.6,
+    responseTime: 0.4
+  })
+  .addAdaptiveBehavior('SYSTEMATIC_LEARNING', {
+    learningRate: 0.12,
+    patternRecognition: 0.65,
+    defenseOptimization: 0.55
+  })
+  .compose();
+
+// Create adaptive cyber threat
+const advancedThreat = threatComposer
+  .addComponent('NETWORK_PROPAGATION', {
+    spreadVector: 'lateral_movement',
+    stealthLevel: 0.95,
+    persistenceMechanism: true
+  })
+  .addComponent('AI_LEARNING', {
+    learningRate: 0.15,
+    adaptationSpeed: 0.8,
+    intelligenceLevel: 0.85
+  })
+  .addComponent('COUNTER_MEASURE_RESISTANCE', {
+    evasionTechniques: ['polymorphism', 'encryption'],
+    adaptationSpeed: 0.9
+  })
+  .compose();
+```
+
+This unified threat-threatenable system creates a **complete simulation ecosystem** where threats and their targets co-evolve through realistic bidirectional interactions, enabling emergent behaviors that mirror real-world complex threat scenarios.
+class CrossDomainInteractionDiscovery {
+  validateInteraction(domainA: ThreatDomain, domainB: ThreatDomain, interaction: ComponentInteraction): ValidationResult {
+    // Apply scientific validation to cross-domain interactions
+    const validation = this.validationFramework.validate(interaction);
     const measurements = this.measurementTools.measureOutcomes(interaction);
     
     return {
       isValid: validation.statisticalSignificance > 0.95 && measurements.effectSize > 0.5,
       confidence: validation.confidenceInterval,
       reproducibility: validation.replicationStudies.length,
-      practicalSignificance: measurements.realWorldImpact,
-      scientificRigor: validation.methodologyScore
+      practicalSignificance: measurements.realWorldImpact
     };
   }
 }
-```
-
-### Comprehensive Testing and Validation Framework
-
-```typescript
-// Scientific testing framework with statistical validation and reproducibility requirements
-class ComprehensiveTestingFramework {
-  private unitTestSuite: UnitTestSuite;
-  private integrationTestSuite: IntegrationTestSuite;
-  private emergenceValidationSuite: EmergenceValidationSuite;
-  private educationalAssessmentSuite: EducationalAssessmentSuite;
-  private performanceBenchmarkSuite: PerformanceBenchmarkSuite;
-  
-  // Unit testing with scientific rigor
-  runUnitTests(component: ThreatComponent): UnitTestResults {
-    const tests = this.unitTestSuite.generateTests(component);
-    const results = tests.map(test => this.executeScientificTest(test));
-    
-    return {
-      passed: results.filter(r => r.statisticalSignificance > 0.95).length,
-      failed: results.filter(r => r.statisticalSignificance <= 0.95).length,
-      statisticalValidity: this.calculateOverallValidity(results),
-      reproducibilityScore: this.calculateReproducibility(results),
-      effectSizes: results.map(r => r.effectSize)
-    };
-  }
-  
-  // Integration testing with emergent behavior validation
-  runIntegrationTests(components: ThreatComponent[]): IntegrationTestResults {
-    const interactions = this.integrationTestSuite.generateInteractionTests(components);
-    const emergentBehaviors = this.emergenceValidationSuite.validateEmergentBehaviors(components);
-    
-    return {
-      interactionValidity: this.validateInteractionsScientifically(interactions),
-      emergentBehaviorReality: this.verifyEmergentBehaviorsAreReal(emergentBehaviors),
-      crossDomainIntegration: this.testCrossDomainScientificValidity(components),
-      performanceImpact: this.measurePerformanceScientifically(components),
-      educationalValue: this.assessEducationalImpact(components)
-    };
-  }
-  
-  // Educational outcome assessment with measurable learning objectives
-  assessEducationalOutcomes(learnerId: string, componentInteractions: ComponentInteraction[]): EducationalAssessment {
-    const knowledgeGains = this.educationalAssessmentSuite.measureKnowledgeGains(learnerId, componentInteractions);
-    const skillDevelopment = this.educationalAssessmentSuite.evaluateSkillDevelopment(learnerId);
-    conceptualUnderstanding = this.educationalAssessmentSuite.assessConceptualUnderstanding(learnerId);
-    
-    return {
-      learningObjectivesAchieved: this.measureLearningObjectives(knowledgeGains),
-      skillProgression: this.evaluateSkillProgression(skillDevelopment),
-      conceptualMastery: this.assessConceptualMastery(conceptualUnderstanding),
-      retentionRate: this.measureKnowledgeRetention(learnerId),
-      transferOfLearning: this.assessLearningTransfer(learnerId),
-      scientificThinkingDevelopment: this.evaluateScientificThinking(learnerId)
-    };
-  }
-  
-  // Performance benchmarking with scientific methodology
-  benchmarkPerformance(systemConfig: ThreatForgeConfig): PerformanceBenchmark {
-    const baseline = this.performanceBenchmarkSuite.establishBaseline(systemConfig);
-    const stressTests = this.performanceBenchmarkSuite.runStressTests(systemConfig);
-    const scalabilityTests = this.performanceBenchmarkSuite.testScalability(systemConfig);
-    
-    return {
-      baselinePerformance: baseline.metrics,
-      stressTestResults: this.analyzeStressTestResults(stressTests),
-      scalabilityLimits: this.determineScalabilityLimits(scalabilityTests),
-      optimizationRecommendations: this.generateOptimizationRecommendations(baseline, stressTests, scalabilityTests),
-      realWorldPerformance: this.estimateRealWorldPerformance(baseline, stressTests)
-    };
-  }
-}
-
-// Statistical validation utilities
-class StatisticalValidationUtils {
-  static calculateStatisticalSignificance(data: number[]): StatisticalResult {
-    // Apply appropriate statistical tests based on data distribution
-    const normalityTest = this.testNormality(data);
-    const statisticalTest = normalityTest.isNormal ? 
-      this.performTTest(data) : this.performMannWhitneyU(data);
-    
-    return {
-      pValue: statisticalTest.pValue,
-      effectSize: this.calculateCohensD(data),
-      confidenceInterval: this.calculateConfidenceInterval(data),
-      statisticalPower: this.calculateStatisticalPower(data),
-      sampleSizeAdequacy: this.assessSampleSize(data)
-    };
-  }
-  
-  static validateReproducibility(originalResults: ExperimentResults, replicationResults: ExperimentResults): ReproducibilityAssessment {
-    const consistency = this.measureResultConsistency(originalResults, replicationResults);
-    const effectSizeStability = this.assessEffectSizeStability(originalResults, replicationResults);
-    const methodologicalRigor = this.evaluateMethodologicalRigor(originalResults, replicationResults);
-    
-    return {
-      reproducibilityScore: (consistency + effectSizeStability + methodologicalRigor) / 3,
-      consistencyRating: consistency,
-      stabilityAssessment: effectSizeStability,
-      methodologicalQuality: methodologicalRigor,
-      recommendation: this.generateReproducibilityRecommendation(consistency, effectSizeStability, methodologicalRigor)
-    };
-  }
-}
-```
-
-This enhanced scientific interaction discovery system transforms ThreatForge from a simple simulation into a scientifically rigorous platform where learners discover genuine interactions through proper scientific methodology, with measurable educational outcomes and statistically validated results that contribute to real scientific understanding of complex system interactions.

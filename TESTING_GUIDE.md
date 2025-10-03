@@ -1,8 +1,8 @@
-# ThreatForge Documentation Testing Guide 🧪
+# Testing Guide 🧪
 
 ## Overview
 
-This guide provides comprehensive testing strategies for ThreatForge documentation, including automated validation, example testing, and quality assurance processes to ensure documentation accuracy and reliability.
+Comprehensive testing strategies for ThreatForge documentation, including automated validation, example testing, and quality assurance processes.
 
 ## Documentation Testing Strategy
 
@@ -12,32 +12,8 @@ This guide provides comprehensive testing strategies for ThreatForge documentati
 2. **Code Example Testing**: Executable examples with expected outputs
 3. **Link Validation**: Internal and external link verification
 4. **API Documentation Testing**: Type definitions and method signatures
-5. **Performance Testing**: Documentation load times and responsiveness
-6. **Accessibility Testing**: Screen reader compatibility and color contrast
 
 ## Automated Testing Framework
-
-### Test Structure
-
-```
-tests/
-├── documentation/
-│   ├── content-validation.test.js
-│   ├── code-examples.test.js
-│   ├── link-validation.test.js
-│   ├── api-docs.test.js
-│   ├── performance.test.js
-│   └── accessibility.test.js
-├── examples/
-│   ├── tier1-examples.test.js
-│   ├── tier2-examples.test.js
-│   ├── tier3-examples.test.js
-│   ├── tier4-examples.test.js
-│   └── tier5-examples.test.js
-└── integration/
-    ├── docs-integration.test.js
-    └── example-integration.test.js
-```
 
 ### Content Validation Tests
 
@@ -47,7 +23,6 @@ import { describe, it, expect } from 'vitest'
 import { readFileSync } from 'fs'
 import { glob } from 'glob'
 import markdownlint from 'markdownlint'
-import spellchecker from 'spellchecker'
 
 describe('Documentation Content Validation', () => {
   const docFiles = await glob('**/*.md', { ignore: ['node_modules/**'] })
@@ -58,9 +33,6 @@ describe('Documentation Content Validation', () => {
       config: {
         'line-length': { line_length: 120 },
         'no-trailing-spaces': true,
-        'no-multiple-blanks': true,
-        'blanks-around-headers': true,
-        'blanks-around-lists': true,
         'header-style': { style: 'atx' }
       }
     }
@@ -73,58 +45,18 @@ describe('Documentation Content Validation', () => {
     const terminology = {
       'component-based': 'component-based',
       'emergent behavior': 'emergent behavior',
-      'cross-domain': 'cross-domain',
       'ThreatForge': 'ThreatForge'
     }
     
     for (const file of docFiles) {
       const content = readFileSync(file, 'utf-8')
       for (const [correct, variations] of Object.entries(terminology)) {
-        // Check for incorrect variations
         const incorrectPattern = new RegExp(`\\b(${variations})\\b`, 'gi')
         const matches = content.match(incorrectPattern)
         if (matches) {
           expect(matches.every(match => match === correct)).toBe(true)
         }
       }
-    }
-  })
-  
-  it('should have proper code block formatting', async () => {
-    const codeBlockRegex = /```(\w+)?\n[\s\S]*?\n```/g
-    
-    for (const file of docFiles) {
-      const content = readFileSync(file, 'utf-8')
-      const codeBlocks = content.match(codeBlockRegex) || []
-      
-      codeBlocks.forEach(block => {
-        // Check for language specification
-        const languageMatch = block.match(/```(\w+)/)
-        expect(languageMatch).toBeTruthy()
-        expect(['typescript', 'javascript', 'bash', 'json', 'markdown']).toContain(languageMatch[1])
-      })
-    }
-  })
-  
-  it('should have consistent header structure', async () => {
-    const headerRegex = /^#+\s+(.+)$/gm
-    
-    for (const file of docFiles) {
-      const content = readFileSync(file, 'utf-8')
-      const headers = content.match(headerRegex) || []
-      
-      // Check that first header is H1
-      if (headers.length > 0) {
-        expect(headers[0]).toMatch(/^#\s+/)
-      }
-      
-      // Check header hierarchy
-      let previousLevel = 0
-      headers.forEach(header => {
-        const level = header.match(/^#+/)[0].length
-        expect(level).toBeLessThanOrEqual(previousLevel + 1)
-        previousLevel = level
-      })
     }
   })
 })
@@ -146,8 +78,7 @@ describe('Tier 1 Code Examples', () => {
     })
   })
   
-  it('should create basic threat (Example 1.1)', () => {
-    // Code from QUICK_START.md Example 1.1
+  it('should create basic threat', () => {
     const helloThreat = engine.createThreat('BASIC_INFECTION', {
       transmissionRate: 0.5,
       severity: 0.3
@@ -155,25 +86,7 @@ describe('Tier 1 Code Examples', () => {
     
     expect(helloThreat).toBeDefined()
     expect(helloThreat.type).toBe('BASIC_INFECTION')
-    expect(helloThreat.severity).toBe(0.3)
     expect(helloThreat.properties.transmissionRate).toBe(0.5)
-  })
-  
-  it('should create threat with properties (Example 1.2)', () => {
-    // Code from QUICK_START.md Example 1.2
-    const propertyThreat = engine.createThreat('BIOLOGICAL_INFECTION', {
-      transmissionRate: 0.7,
-      incubationPeriod: 5,
-      infectiousPeriod: 14,
-      mortalityRate: 0.02,
-      mutationPotential: 0.1,
-      zoonoticPotential: 0.3
-    })
-    
-    expect(propertyThreat).toBeDefined()
-    expect(propertyThreat.properties.transmissionRate).toBe(0.7)
-    expect(propertyThreat.properties.incubationPeriod).toBe(5)
-    expect(propertyThreat.properties.mortalityRate).toBe(0.02)
   })
   
   it('should simulate threat progression correctly', () => {

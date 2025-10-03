@@ -4,6 +4,8 @@
 
 ThreatForge's component-based architecture transforms threat simulation from rigid, predefined entities into dynamic, emergent systems. By decomposing complex threats into atomic behavioral components, we enable unprecedented flexibility, extensibility, and emergent complexity.
 
+For detailed implementation specifications, see [Component-Based Threat Mechanics](./COMPONENT_BASED_THREAT_MECHANICS.md). For code examples, see [Code Examples](./CODE_EXAMPLES.md).
+
 ## Core Philosophy
 
 ### The Problem with Traditional Approaches
@@ -45,7 +47,7 @@ interface ThreatComponent {
 
 Atomic components are the **smallest indivisible units of threat behavior**. They represent single, focused capabilities that can be combined to create complex threats.
 
-### Core Component Types
+### Core Component Categories
 
 #### 1. Transmission Components
 ```typescript
@@ -382,43 +384,6 @@ const quantumBiologyPlugin: ComponentPlugin = {
 };
 ```
 
-## Performance Considerations
-
-### Component Optimization
-
-```typescript
-interface ComponentOptimization {
-  // Reduce component complexity
-  simplifyBehaviors(behaviors: Behavior[]): Behavior[];
-  
-  // Cache interaction calculations
-  cacheInteractions(interactions: ComponentInteraction[]): CachedInteractions;
-  
-  // Limit emergence potential
-  limitEmergence(potential: number, max: number): number;
-  
-  // Optimize for specific hardware
-  optimizeForHardware(component: ThreatComponent, hardware: HardwareProfile): ThreatComponent;
-}
-```
-
-### Memory Management
-
-```typescript
-class ComponentMemoryManager {
-  private componentPool: ObjectPool<ThreatComponent>;
-  private interactionCache: LRUCache<ComponentInteraction>;
-  
-  optimizeMemoryUsage(components: ThreatComponent[]): OptimizedComponents {
-    return {
-      components: this.deduplicateComponents(components),
-      memorySaved: this.calculateMemorySavings(components),
-      performanceGain: this.estimatePerformanceGain(components)
-    };
-  }
-}
-```
-
 ## Best Practices
 
 ### Component Design Principles
@@ -530,7 +495,6 @@ The component-based architecture is the foundation of ThreatForge's flexibility 
 
 ### Next Steps
 
+- **[Component-Based Threat Mechanics](COMPONENT_BASED_THREAT_MECHANICS.md)**: Detailed implementation specifications
 - **[Code Examples](CODE_EXAMPLES.md)**: See practical component implementations
-- **[API Reference](API_REFERENCE.md)**: Detailed API documentation
-- **[Performance Optimization](PERFORMANCE_OPTIMIZATION.md)**: Advanced optimization techniques
-- **[Development Guide](DEVELOPMENT_GUIDE.md)**: Implementation patterns and best practices
+- **[Quick Start](QUICK_START.md)**: Educational framework and learning progression

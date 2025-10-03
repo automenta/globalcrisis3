@@ -1,33 +1,5 @@
 # Performance Optimization Guide 🚀
 
-## Overview
-
-This guide provides systematic performance optimization strategies for ThreatForge's component-based threat simulation system. For comprehensive performance-adaptive system details, see [Component-Based Threat Mechanics](COMPONENT_BASED_THREAT_MECHANICS.md).
-
-## Performance-Adaptive Quality System
-
-### Intelligent Performance Management
-
-ThreatForge implements a sophisticated performance-adaptive quality system that automatically adjusts visual fidelity, computational complexity, and emergent behavior detail based on real-time performance metrics.
-
-```typescript
-interface PerformanceAdaptiveSystem {
-  qualityLevels: QualityLevel[];
-  performanceMetrics: RealTimeMetrics;
-  adaptationStrategy: AdaptationStrategy;
-  
-  adaptQuality(currentMetrics: PerformanceMetrics): QualityLevel;
-  optimizePerformance(targetFPS: number): OptimizationResult;
-}
-```
-
-The system operates on five distinct quality levels:
-- **Ultra**: Maximum visual fidelity with full emergent behavior complexity
-- **High**: Enhanced visuals with comprehensive emergence
-- **Balanced**: Optimal balance between performance and quality
-- **Low**: Streamlined visuals with essential emergence
-- **Minimal**: Core functionality with basic emergence
-
 ## Quick Performance Setup
 
 ```typescript
@@ -41,23 +13,6 @@ const engine = new GameEngine({
   }
 })
 ```
-
-## Performance Architecture
-
-### Adaptive Quality System
-
-ThreatForge automatically adjusts quality based on device capabilities, current performance, scene complexity, and user preferences.
-
-### Quality Levels
-
-| Level | FPS Target | Complexity | Memory Usage | Use Case |
-|-------|------------|------------|--------------|----------|
-| Minimal | 60+ | Very Low | <1GB | Mobile, Low-end |
-| Low | 60+ | Low | <2GB | Laptops, Integrated GPU |
-| Balanced | 60+ | Medium | <4GB | Standard Gaming |
-| High | 60+ | High | <8GB | High-end Gaming |
-| Ultra | 60+ | Maximum | <16GB | Enthusiast Systems |
-| Auto | Variable | Dynamic | Adaptive | Recommended |
 
 ## Component Performance Optimization
 
@@ -507,17 +462,7 @@ engine.on('performance:critical', (metrics) => {
 })
 ```
 
-## Conclusion
-
-Performance optimization is an ongoing process that requires:
-
-1. **Continuous Monitoring**: Track performance metrics in real-time
-2. **Adaptive Quality**: Adjust quality based on current performance
-3. **Platform Awareness**: Optimize for specific platforms and devices
-4. **User Experience**: Balance performance with visual quality
-5. **Testing**: Regular benchmarking and load testing
-
-### Performance Checklist
+## Performance Checklist
 
 - [ ] Set appropriate quality levels for target hardware
 - [ ] Enable component pooling and memory management

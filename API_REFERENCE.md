@@ -1,14 +1,14 @@
-# ThreatForge API Reference 📚
+# API Reference 📚
 
 ## Overview
 
-This document provides complete API documentation for the ThreatForge game engine, including all classes, methods, properties, and events. Use this reference for detailed implementation guidance.
+Complete API documentation for the ThreatForge game engine. For implementation examples, see [Code Examples](CODE_EXAMPLES.md).
 
 ## Core Engine API
 
 ### GameEngine Class
 
-The main entry point for the ThreatForge engine.
+Main entry point for the ThreatForge engine.
 
 ```typescript
 class GameEngine {
@@ -22,7 +22,6 @@ class GameEngine {
   
   // Component Management
   registerComponent(type: string, component: ComponentConstructor): void
-  unregisterComponent(type: string): void
   getComponentRegistry(): ComponentRegistry
   
   // Performance Management
@@ -33,7 +32,6 @@ class GameEngine {
   // Event System
   on(event: string, callback: Function): void
   off(event: string, callback: Function): void
-  emit(event: string, data: any): void
 }
 ```
 
@@ -46,8 +44,6 @@ interface EngineConfig {
   performance?: PerformanceConfig
   rendering?: RenderingConfig
   multiplayer?: MultiplayerConfig
-  mobile?: MobileConfig
-  profiling?: ProfilingConfig
 }
 ```
 
@@ -57,13 +53,9 @@ interface EngineConfig {
 interface PerformanceConfig {
   quality?: QualityLevel                    // 'minimal' | 'low' | 'balanced' | 'high' | 'ultra' | 'adaptive'
   targetFPS?: number                        // Target frame rate (default: 60)
-  detailLevel?: 'auto' | 1 | 2 | 3 | 4      // Detail level
   maxEmergentBehaviors?: number             // Max emergent behaviors
   memoryLimit?: number | 'adaptive'         // Memory limit in MB
   enableAutoAdjustment?: boolean            // Enable auto-adjustment
-  minimumAcceptableFPS?: number             // Minimum acceptable FPS
-  effectQuality?: 'minimal' | 'low' | 'medium' | 'high'
-  physicsAccuracy?: 'low' | 'medium' | 'high'
 }
 ```
 
@@ -79,7 +71,6 @@ interface ThreatComponent {
   behaviors: Behavior[]
   emergencePotential: number
   domain: ThreatDomain
-  interactions: ComponentInteraction[]
   quality: QualityLevel
   
   // Methods
@@ -99,38 +90,20 @@ enum ComponentType {
   NETWORK_PROPAGATION = 'NETWORK_PROPAGATION',
   VECTOR_BORNE = 'VECTOR_BORNE',
   QUANTUM_ENTANGLEMENT = 'QUANTUM_ENTANGLEMENT',
-  SURFACE_CONTAMINATION = 'SURFACE_CONTAMINATION',
-  HUMAN_HUMAN_TRANSMISSION = 'HUMAN_HUMAN_TRANSMISSION',
-  SOCIAL_MEDIA_PROPAGATION = 'SOCIAL_MEDIA_PROPAGATION',
   
   // Effect Components
   HEALTH_IMPACT = 'HEALTH_IMPACT',
   ECONOMIC_DISRUPTION = 'ECONOMIC_DISRUPTION',
   INFRASTRUCTURE_DAMAGE = 'INFRASTRUCTURE_DAMAGE',
-  COGNITIVE_MANIPULATION = 'COGNITIVE_MANIPULATION',
-  ENVIRONMENTAL_DAMAGE = 'ENVIRONMENTAL_DAMAGE',
-  SOCIAL_DISRUPTION = 'SOCIAL_DISRUPTION',
   
   // Evolution Components
   MUTATION_ENGINE = 'MUTATION_ENGINE',
   ADAPTATION_LEARNING = 'ADAPTATION_LEARNING',
-  COUNTER_MEASURE_RESISTANCE = 'COUNTER_MEASURE_RESISTANCE',
-  EVOLUTIONARY_ALGORITHM = 'EVOLUTIONARY_ALGORITHM',
   
   // Special Components
   QUANTUM_COHERENCE = 'QUANTUM_COHERENCE',
-  RADIOLOGICAL_DECAY = 'RADIOLOGICAL_DECAY',
-  ROBOTIC_AUTONOMY = 'ROBOTIC_AUTONOMY',
   AI_LEARNING_SYSTEM = 'AI_LEARNING_SYSTEM',
-  NEURAL_INTERFACE = 'NEURAL_INTERFACE',
-  SYNTHETIC_BIOLOGY = 'SYNTHETIC_BIOLOGY',
-  QUANTUM_NETWORK = 'QUANTUM_NETWORK',
-  EXTREME_WEATHER = 'EXTREME_WEATHER',
-  ROBOTIC_SWARM = 'ROBOTIC_SWARM',
-  INFRASTRUCTURE_VULNERABILITY = 'INFRASTRUCTURE_VULNERABILITY',
-  ENVIRONMENTAL_SENSING = 'ENVIRONMENTAL_SENSING',
-  COUNTER_MEASURE_INTELLIGENCE = 'COUNTER_MEASURE_INTELLIGENCE',
-  ADAPTIVE_PATHOGEN = 'ADAPTIVE_PATHOGEN'
+  SYNTHETIC_BIOLOGY = 'SYNTHETIC_BIOLOGY'
 }
 ```
 
@@ -143,11 +116,7 @@ enum ThreatDomain {
   ENVIRONMENTAL = 'ENVIRONMENTAL',
   QUANTUM = 'QUANTUM',
   RADIOLOGICAL = 'RADIOLOGICAL',
-  ROBOTIC = 'ROBOTIC',
-  NEUROLOGICAL = 'NEUROLOGICAL',
-  INFORMATION = 'INFORMATION',
-  GEOPOLITICAL = 'GEOPOLITICAL',
-  SPACE = 'SPACE'
+  ROBOTIC = 'ROBOTIC'
 }
 ```
 
@@ -168,19 +137,13 @@ interface Behavior {
 interface BehaviorContext {
   world: WorldState
   threat: ComposedThreat
-  nearbyThreats: ComposedThreat[]
   environment: EnvironmentalFactors
   time: number
   deltaTime: number
   
   // Helper Methods
   getComponent(type: ComponentType): ThreatComponent | undefined
-  getNearbyComponents(type: ComponentType): ThreatComponent[]
   emitEmergentEvent(type: string, data: any): void
-  getEnvironmentalStress(): number
-  getPopulationDensity(): number
-  getNetworkConnectivity(): number
-  getQuantumCoherence(): number
 }
 ```
 
